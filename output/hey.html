@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hi</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+        }
+
+        .menu-icon {
+            display: none;
+            font-size: 2rem;
+            padding: 1rem;
+            cursor: pointer;
+            background: #333;
+            color: white;
+        }
+
+        .menu,
+        .menu ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .menu {
+            background: #444;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        .menu li {
+            position: relative;
+        }
+
+        .menu>li {
+            padding: 1rem 0;
+        }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            display: inline-block;
+        }
+
+        /* Desktop arrows */
+        .menu .has-submenu>a::after {
+            content: " ▼";
+            font-size: 0.8rem;
+        }
+
+        .menu .has-submenu ul .has-submenu>a::after {
+            content: " ►";
+        }
+
+        .menu ul {
+            position: absolute;
+            background: #666;
+            display: none;
+            top: 100%;
+            left: 0;
+            min-width: 150px;
+            z-index: 1000;
+        }
+
+        .menu li:hover>ul {
+            display: block;
+        }
+
+        .menu ul li {
+            position: relative;
+        }
+
+        .menu ul ul {
+            left: 100%;
+            top: 0;
+        }
+
+        /* Mobile overrides */
+        @media (max-width: 768px) {
+            .menu-icon {
+                display: block;
+            }
+
+            .menu {
+                display: none;
+                flex-direction: column;
+            }
+
+            #menu-toggle:checked+.menu-icon+.menu {
+                display: flex;
+            }
+
+            .menu ul {
+                position: static;
+                display: none;
+            }
+
+            .menu li:hover>ul {
+                display: none;
+            }
+
+            .menu li:hover>ul,
+            .menu li:focus-within>ul {
+                display: block;
+            }
+
+            .menu ul ul {
+                padding-left: 1rem;
+            }
+
+            /* Force all submenu indicators to ▼ on mobile */
+            .menu .has-submenu>a::after,
+            .menu .has-submenu ul .has-submenu>a::after {
+                content: " ▼";
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <input type="checkbox" id="menu-toggle" hidden />
+    <label for="menu-toggle" class="menu-icon">☰ Menu</label>
+
+    
+
+    <p>Oopsie</p>
+
+</body>
+
+</html>
