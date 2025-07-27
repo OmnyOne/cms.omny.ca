@@ -15,27 +15,39 @@ jobs:
     permissions:
       contents: read
       deployments: write
+
     steps:
       - uses: actions/checkout@v4
+
       - name: Set up .NET
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 8.0.x
-      - name: Install omny site builder
+
+      - name: Install Omny Site Builder
         run: dotnet tool install -g Omny.Cms.Builder --prerelease
+
       - name: Build static site
         run: omnycms-builder
-      - name: Deploy main site
+
+      - name: Sanitize branch name
+        id: branch
+        run: |
+          BRANCH_NAME="${GITHUB_REF_NAME//\//-}"
+          echo "branch=$BRANCH_NAME" >> "$GITHUB_OUTPUT"
+
+      - name: Deploy to Cloudflare Workers (main)
         if: github.ref_name == 'main'
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy ./output --project-name=${{ secrets.CLOUDFLARE_PAGES_PROJECT }}
-      - name: Deploy preview
+          command: versions upload
+
+      - name: Deploy to Cloudflare Workers (preview)
         if: github.ref_name != 'main'
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy ./output --project-name=${{ secrets.CLOUDFLARE_PAGES_PROJECT }} --branch=${{ github.ref_name }}
+          command: versions upload --preview-alias preview-${{ steps.branch.outputs.branch }}
