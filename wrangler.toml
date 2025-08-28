@@ -1,0 +1,7 @@
+name = "cms-omny-ca"
+compatibility_date = "2024-09-25"
+preview_urls = true
+
+[assets]
+directory = "./output"
+not_found_handling = "single-page-application"
