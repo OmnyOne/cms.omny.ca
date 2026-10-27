@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
+ <style>
     :root { --ink:#14283c;--muted:#5e7182;--navy:#0b2238;--teal:#00a89a;--line:#dce6ec;--pale:#f3f8fa;--white:#fff; }
     * { box-sizing:border-box; }
     html { scroll-behavior:smooth; }
@@ -22,10 +22,11 @@
     .brand-icon svg { width:28px; height:28px; }
     .brand-word { font-family:Manrope,sans-serif; font-size:23px; font-weight:800; letter-spacing:-.9px; line-height:1; }
     .brand-word span { color:#079c92; }
-    .nav { display:flex; gap:34px; align-items:center; }
-    .nav a { font-size:14px; font-weight:700; color:#526375; text-decoration:none; padding:8px 0; }
-    .nav a.active { color:var(--navy); border-bottom:2px solid var(--teal); }
-    .nav a:hover { color:#008c83; }
+    .menu { display:flex; gap:34px; align-items:center; list-style:none; padding:0; margin:0; }
+    .menu li { margin:0; padding:0; }
+    .menu a { display:block; font-size:14px; font-weight:700; color:#526375; text-decoration:none; padding:8px 0; }
+    .menu a[href="/why-another-cms.html"] { color:var(--navy); border-bottom:2px solid var(--teal); }
+    .menu a:hover { color:#008c83; }
     .menu-toggle { display:none; border:1px solid var(--line); background:white; border-radius:8px; padding:8px 11px; font-size:22px; line-height:1; cursor:pointer; color:var(--ink); }
     .hero { position:relative; overflow:hidden; background:radial-gradient(circle at 86% 30%,#174b5d 0,transparent 32%),linear-gradient(116deg,#0b2238 0%,#0b3045 100%); color:white; }
     .hero:after { content:""; position:absolute; width:600px;height:600px;border:1px solid #ffffff12;border-radius:50%;right:-180px;top:-235px;box-shadow:0 0 0 90px #ffffff06,0 0 0 180px #ffffff04;pointer-events:none; }
@@ -77,7 +78,7 @@
     .footer-inner { display:flex;align-items:center;justify-content:space-between;gap:20px;font-size:13px; }
     footer strong { font-family:Manrope,sans-serif; color:white; font-size:17px; }
     @media(max-width:800px) { .hero-inner{grid-template-columns:1fr;gap:25px;padding-block:65px}.hero-visual{max-width:440px;padding:0 0 15px}.article-layout{grid-template-columns:1fr}.toc{display:none}.main{padding-top:60px}.benefits{grid-template-columns:repeat(2,minmax(0,1fr))}.bottom{align-items:flex-start;flex-direction:column} }
-    @media(max-width:560px) { .container{width:min(100% - 34px,1160px)}.site-header{height:70px}.brand-word{font-size:20px}.brand-icon{width:36px;height:36px}.menu-toggle{display:block}.nav{display:none;position:absolute;top:70px;left:0;right:0;padding:15px 20px;background:white;border-bottom:1px solid var(--line);box-shadow:0 16px 30px #0b223816;flex-direction:column;gap:10px;align-items:stretch}.nav.open{display:flex}.nav a{padding:10px}.nav a.active{border-bottom:0;background:#e9f6f4;border-radius:7px}.hero-inner{padding-block:58px}.hero p{font-size:16px}.hero-visual{display:none}.section{margin-bottom:48px}.benefits{grid-template-columns:1fr}.benefits-band{padding:58px 0}.bottom{padding:60px 0}.footer-inner{flex-direction:column;align-items:flex-start} }
+    @media(max-width:560px) { .container{width:min(100% - 34px,1160px)}.site-header{height:70px}.brand-word{font-size:20px}.brand-icon{width:36px;height:36px}.menu-toggle{display:block}.menu{display:none;position:absolute;top:70px;left:0;right:0;padding:15px 20px;background:white;border-bottom:1px solid var(--line);box-shadow:0 16px 30px #0b223816;flex-direction:column;gap:10px;align-items:stretch}.menu.open{display:flex}.menu li{width:100%}.menu a{padding:10px}.menu a[href="/why-another-cms.html"]{border-bottom:0;background:#e9f6f4;border-radius:7px}.hero-inner{padding-block:58px}.hero p{font-size:16px}.hero-visual{display:none}.section{margin-bottom:48px}.benefits{grid-template-columns:1fr}.benefits-band{padding:58px 0}.bottom{padding:60px 0}.footer-inner{flex-direction:column;align-items:flex-start} }
     /* Simple editor-friendly article presentation. */
     .hero,.toc,.benefits-band,.bottom,.section-label { display:none; }
     .main { padding:0; }
