@@ -25,7 +25,6 @@
     .menu { display:flex; gap:34px; align-items:center; list-style:none; padding:0; margin:0; }
     .menu li { margin:0; padding:0; }
     .menu a { display:block; font-size:14px; font-weight:700; color:#526375; text-decoration:none; padding:8px 0; }
-    .menu a[href="/why-another-cms.html"] { color:var(--navy); border-bottom:2px solid var(--teal); }
     .menu a:hover { color:#008c83; }
     .menu-toggle { display:none; border:1px solid var(--line); background:white; border-radius:8px; padding:8px 11px; font-size:22px; line-height:1; cursor:pointer; color:var(--ink); }
     .hero { position:relative; overflow:hidden; background:radial-gradient(circle at 86% 30%,#174b5d 0,transparent 32%),linear-gradient(116deg,#0b2238 0%,#0b3045 100%); color:white; }
@@ -108,6 +107,16 @@
     <section class="bottom container"><div><div class="section-label">Keep exploring</div><h2>Why build Omny CMS with .NET?</h2><p>Explore the technology choices behind the project and how they support the same goals of flexibility, reliability, and efficiency.</p></div><a class="button" href="https://omny-cms-omny-ca.al.workers.dev/why-dotnet.html">Why .NET? <span aria-hidden="true">→</span></a></section>
   </main>
   <footer><div class="container footer-inner"><strong>omny<span style="color:#46ccbf">cms</span></strong><span>Flexible content management, designed for the way you build.</span></div></footer>
-  <script>const button=document.getElementById('menu-toggle');const navigation=document.getElementById('main-nav');button.addEventListener('click',()=>{const isOpen=navigation.classList.toggle('open');button.setAttribute('aria-expanded',String(isOpen));});</script>
+  <script>const button=document.getElementById('menu-toggle');const navigation=document.getElementById('main-nav');button.addEventListener('click',()=>{const isOpen=navigation.classList.toggle('open');button.setAttribute('aria-expanded',String(isOpen));});const currentPath = window.location.pathname;
+
+const menuLinks = document.querySelectorAll(".menu a");
+
+for (const link of menuLinks) {
+    const linkPath = new URL(link.href).pathname;
+
+    if (linkPath === currentPath) {
+        link.classList.add("active");
+    }
+}</script>
 <script type="module">import { mountSiteWidget } from "/_sites/dispatch-assets/sites-widget.js";mountSiteWidget({"kind":"editor-composer","mobileEnabled":false,"environment":"production","chatgptOrigin":"https://chatgpt.com","locale":"en-US","accountId":"personal","projectId":"appgprj_6ae0d43bcda08191ab17e998929bb381","projectTitle":"Omny CMS — Why another CMS?"});</script></body>
 </html>
